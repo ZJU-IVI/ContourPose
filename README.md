@@ -2,11 +2,11 @@
 
 ### **Video demo**
 
-![ContourPose](E:\typora image\ContourPose.gif)
+![ContourPose](./data/ContourPose.gif)
 
 ### **Pose estimation demo**
 
-![image-20220607224931960](E:\typora image\image-20220607224931960.png)
+![pose demo](./data/pose demp.png)
 
  
 

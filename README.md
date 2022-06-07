@@ -6,7 +6,7 @@
 
 ### **Pose estimation demo**
 
-![pose demo](./data/pose demo.png)
+![pose demo](./data/pose_demo.png)
 
  
 

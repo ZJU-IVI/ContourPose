@@ -1,4 +1,4 @@
-## Cont2ourPose：A monocular 6D pose estimation method for reflective texture-less metal parts
+## ContourPose：A monocular 6D pose estimation method for reflective texture-less metal parts
 
 ### **Video demo**
 

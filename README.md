@@ -12,4 +12,4 @@
 
 ## Installation
 
-We are still finishing the project and we will open source it as soon as possible 2022.06.07
+We will open source as soon as possible

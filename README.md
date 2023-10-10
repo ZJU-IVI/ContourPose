@@ -2,11 +2,11 @@
 
 ### **Video demo**
 
-![ContourPose](./data/ContourPose.gif)
+![ContourPose](figure/ContourPose.gif)
 
 ### **Pose estimation demo**
 
-![pose demo](./data/pose_demo.png)
+![pose demo](figure/pose_demo.png)
 
  
 

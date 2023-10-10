@@ -149,12 +149,12 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--eval", type=bool, default=True)
+    parser.add_argument("--eval", type=bool, default=False)
     parser.add_argument("--data_path", type=str, default=os.path.join(os.getcwd(), "data"))
-    parser.add_argument("--class_type", type=str, default="obj2")
+    parser.add_argument("--class_type", type=str, default="obj1")
     parser.add_argument("--lr", type=float, default=0.1)
     parser.add_argument("--batch_size", type=int, default=1)
-    parser.add_argument("--epochs", type=int, default=200)
+    parser.add_argument("--epochs", type=int, default=150)
     parser.add_argument("--train", type=bool, default=False)
     parser.add_argument("--gpu_id", help="GPU_ID", type=str, default="0")
     parser.add_argument("--used_epoch", type=int, default=-1)

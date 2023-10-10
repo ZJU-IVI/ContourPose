@@ -42,7 +42,7 @@ class MyDataset(Dataset):
             self.data_paths = self.get_train_data_path(self.root, self.cls)
 
         else:
-            self.path = osp.join(self.root, "test_all/scene{}".format(str(self.scene)))
+            self.path = osp.join(self.root, "test/scene{}".format(str(self.scene)))
             self.K = yaml.load(open(osp.join(self.path, 'Intrinsic.yml'), 'r'))
             self.train_pose = yaml.load(open(osp.join(self.path, 'gt.yml'), 'r'))
             self.data_paths = self.get_test_data_path()
@@ -59,8 +59,8 @@ class MyDataset(Dataset):
         mask_path = osp.join(self.path, "mask")  # use test data train
         edge_path = osp.join(self.path, "gtEdge")
 
-        render_dir = osp.join(root, "train", "renders2", cls)
-        render_edge_dir = osp.join(root, "train", "renders2", "Render_edge", cls)
+        render_dir = osp.join(root, "train", "renders", cls)
+        render_edge_dir = osp.join(root, "train", "renders", "Render_edge", cls)
         render_num = len(glob.glob(osp.join(render_dir, "*.pkl")))
 
         for idx in train_inds:

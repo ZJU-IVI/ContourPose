@@ -12,4 +12,4 @@
 
 ## Installation
 
-We will open source as soon as possible
+

@@ -6,6 +6,13 @@ code for paper "ContourPose：A monocular 6D pose estimation method for reflecti
 
 ![ContourPose](figure/ContourPose.gif)
 
+### **Grasp demo**
+![grasp](figure/grasp.jpg)
+
+![grasp](figure/grasp.gif)
+
+
+
 ### **Pose estimation demo**
 
 ![pose demo](figure/pose_demo.png)
@@ -58,7 +65,7 @@ code for paper "ContourPose：A monocular 6D pose estimation method for reflecti
    
    The test scenes in which the target object is tested can be found in the `sceneObjs.yml`  file.
 ## Pretrained model
-   Download the pretrained models from [here]() and put them to `$ROOT/model/obj{}/150.pkl` 
+   Download the pretrained models from [here](https://drive.google.com/drive/folders/1pOay_3ujEegVbahyLb3llHMVq2cFho-f?usp=drive_link) and put them to `$ROOT/model/obj{}/150.pkl` 
    
 ## Training and testing
 1. Training

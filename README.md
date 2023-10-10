@@ -58,7 +58,7 @@ code for paper "ContourPose：A monocular 6D pose estimation method for reflecti
    
    The test scenes in which the target object is tested can be found in the `sceneObjs.yml`  file.
 ## Pretrained model
-   Download the pretrained model of cat from [here]() and put it to `$ROOT/data/model/obj{}/150.pkl` 
+   Download the pretrained models from [here]() and put them to `$ROOT/data/model/obj{}/150.pkl` 
    
 ## Training and testing
 1. Training

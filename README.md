@@ -83,3 +83,6 @@ code for paper "ContourPose：A monocular 6D pose estimation method for reflecti
    ```shell
     python main.py --class_type obj1 --test True --scene 13 --index 2
    ```
+## Grasping experiment
+
+The `graspScript` folder contains scripts for deploying multiple models in parallel and implementing multi-target pose estimation, and the results are visualized.

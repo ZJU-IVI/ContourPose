@@ -131,23 +131,3 @@ class evaluator(threading.Thread):
 
         R, _ = cv2.Rodrigues(R_exp)
         return np.concatenate([R, t], axis=-1)
-
-    def visualize_heatmap(self, rgb, pred_heatmap):
-        batch_size = rgb.shape[0]
-        if isinstance(rgb, torch.Tensor):
-            rgb = rgb.permute(0, 2, 3, 1).detach().cpu().numpy()
-            rgb *= [0.184, 0.206, 0.197]
-            rgb += [0.419, 0.427, 0.424]
-            rgb = rgb * 255.0
-        rgb = rgb.astype(np.uint8)
-        for i in range(batch_size):
-            pred_heatmap_test = pred_heatmap[i].detach().cpu().numpy()
-            all_pred = np.zeros((pred_heatmap_test.shape[1], pred_heatmap_test.shape[2]))
-            for j in range(pred_heatmap_test.shape[0]):
-                all_pred = all_pred + pred_heatmap_test[j]
-            img_add_pred = cv2.addWeighted(rgb[i, :, :, 0], 0.1, all_pred, 30, 1, dtype=cv2.CV_32F)
-
-            plt.imshow(img_add_pred)
-            plt.draw()
-            plt.pause(0.5)
-            plt.close()

@@ -85,4 +85,4 @@ code for paper "ContourPose：A monocular 6D pose estimation method for reflecti
    ```
 ## Grasping experiment
 
-The `graspScript` folder contains scripts for deploying multiple models in parallel and implementing multi-target pose estimation, and the results are visualized.
+The `graspScript` folder contains scripts for deploying multiple models in parallel and implementing multi-target pose estimation, and provides code that visualizes the results.

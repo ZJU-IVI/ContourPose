@@ -132,7 +132,7 @@ class ContourPose(torch.nn.Module):
         cv2.destroyAllWindows()
 
 
-    def forward(self,x,heatmap=None,edge=None,mask=None,pose=None,K=None):
+    def forward(self,x):
         x2s, x4s, x8s, x16s, x32s, xfc = self.resnet18_8s(x)
 
         fm1 = self.conv16s(torch.cat([xfc,x16s],1))
@@ -165,71 +165,7 @@ class ContourPose(torch.nn.Module):
         fm2 = self.up2storaw(fm2)
         fm2 = self.conv_raw(torch.cat([fm2, x], 1))
         fm2=self.conv_edge(fm2)
-
         pred_edge = fm2
-        #删去后面的网络
-
-        '''
-        # x1s = self.conv_1x1_x(x)
-
-        #without detach
-        fm=torch.cat([x,fm1,fm2],1)
-        fm=self.conv_1x1(fm)
-        #feature fusion
-        fm=fm
-
-        x2s, x4s, x8s, x16s, x32s, xfc = self.resnet18_8s_2(fm)
-        fm3 = self.conv8s(torch.cat([xfc, x8s], 1))
-        fm3 = self.up8sto4s(fm3)
-        if fm3.shape[2] == 136:
-            fm3 = nn.functional.interpolate(fm3, (135, 180), mode='bilinear', align_corners=False)
-
-        fm3 = self.conv4s(torch.cat([fm3, x4s], 1))
-        fm3 = self.up4sto2s(fm3)
-
-        fm3 = self.conv2s(torch.cat([fm3, x2s], 1))
-        fm3 = self.up2storaw(fm3)
-        #fm3_raw = self.conv_raw(torch.cat([fm3, x], 1))
-        fm3_raw=self.conv_raw2(torch.cat([fm3,fm], 1))
-        fm3=self.conv_heatmap(fm3_raw)
-
-        pred_heatmap_final=fm3
-        '''
-
-
-        if self.training:
-            loss_fn=nn.MSELoss()
-            heatmap_loss=loss_fn(pred_heatmap,heatmap)*1000
-            edge_loss = self.seg_loss(pred_edge.float(),edge.float())
-
-            img = x.detach().cpu().numpy()
-            img = np.array(np.transpose(img[0], (1, 2, 0)))
-            img *= [0.184, 0.206, 0.197]
-            img += [0.419, 0.427, 0.424]
-            img = img * 255.0
-            img = img.astype(np.uint8)
-
-
-            heatmap_img = heatmap.detach().cpu().numpy()
-            heatmap_img = np.array(heatmap_img[0]).copy()
-            pred_heatmap_img = pred_heatmap.detach().cpu().numpy()
-            pred_heatmap_img = np.array(pred_heatmap_img[0]).copy()
-            img1 = img.copy()
-            self.visualize_heatmap(img1, heatmap_img)
-            img2 = img.copy()
-            self.visualize_heatmap(img2, pred_heatmap_img)
-
-            #focal loss
-            # BCE_loss = F.binary_cross_entropy_with_logits(pred_edge.float(),edge.float(),reduce=False)
-            # pt = torch.exp(-BCE_loss)
-            # F_loss = self.alpha * (1 - pt) ** self.gamma * BCE_loss
-            loss={}
-            #print(self.resnet18_8s.conv1.weight[0,0,0,0])
-            loss["heatmap_loss"]=heatmap_loss
-            loss["edge_loss"]=edge_loss
-            #print(heatmap_loss,edge_loss)
-            return loss
-        else:
-            return pred_heatmap,pred_edge
+        return pred_heatmap,pred_edge
 
 

@@ -156,35 +156,18 @@ def creatBottom(width, height):  # 生成要求大小的bottom图片
 '------------------------pygame初始化------------------------------'
 width = 2448
 height = 2048
-#creatBottom(width, height)draw
 pygame.init()
 display = (width, height)
 window = pygame.display.set_mode(display, DOUBLEBUF | OPENGLBLIT | OPENGL)
 
 '-----------------------pygame初始化结束------------------------------'
-stlPath = os.path.join("/home/lqz/liquanzhi/Edge_Pose/stl/face-stl")
+# Note that this stl model represents each face of the part,
+# rendering different faces into different colors,
+# which can be generated using CAD software such as solidworks.
+# Of course, you can also input a complete stl model, which will render in the normal direction.
+stlPath = os.path.join(os.path.dirname(os.getcwd()), "stl/face-stl")
 intrinsic = np.array([[2337.1354059537,0,1231.74452654278],[0,2336.97909090459,1048.86628248792],[0,0,1]])
 
-
-def visualize(img, pose):
-    init2()
-    im2 = creatImg("obj7", pose)
-    cv2.imwrite("test_render.png", im2)
-    render_img = cv2.imread("test_render.png")
-    edge_img = cv2.Canny(render_img, 150, 200, 5, L2gradient=True)
-    element = cv2.getStructuringElement(cv2.MORPH_RECT, (7, 7))
-    edge_img = cv2.dilate(edge_img, element)
-    edge_final = edge_img
-    mask_inv = cv2.bitwise_not(edge_final)
-    edge_final = cv2.cvtColor(edge_final, cv2.COLOR_GRAY2BGR)
-    edge_final[:, :, 0] = 0
-    edge_final[edge_final > 0] = 150
-    edge_final[:, :, 2] = 0
-    background_img = cv2.bitwise_and(img, img, mask=mask_inv)
-    last_img = cv2.add(edge_final, background_img)
-    render_img_path = "test_render2.png"
-    cv2.imwrite(render_img_path, last_img)
-    return render_img_path
 
 def visualizeById(pose, obj_id_list, real_edge):
     render_img_path = "mutil_render.png"

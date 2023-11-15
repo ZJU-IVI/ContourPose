@@ -30,7 +30,7 @@ def load_network(net, model_dir, resume=True, epoch=-1, strict=True):
     return pth
 
 
-# config
+# intrinsic
 K = np.array([[679.89393628, 0, 323.41658954],
                       [0, 679.84846281, 278.94291854],
                       [0, 0, 1]])
@@ -48,9 +48,11 @@ class evaluator(threading.Thread):
 
     def getContourNet(self):
         class_type = "obj{}".format(self.obj_id)
-        data_path = "/home/lqz/liquanzhi/allDataset/data"
-        model_path = "/home/lqz/liquanzhi/Edge_Pose/model"
-        model_epoch = 140
+        # your data path
+        data_path = os.path.join(os.path.dirname(os.getcwd()), "data")
+        # your model path
+        model_path = os.path.join(os.path.dirname(os.getcwd()), "model")
+        model_epoch = 150
         self.corner = np.loadtxt(os.path.join(data_path, "train", class_type, "{}.txt".format(class_type)))
         ContourPoseNet = ContourPose(heatmap_dim=self.corner.shape[0])
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")

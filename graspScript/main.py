@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 from eval import evaluator
 import torch
-from visualize_pose import visualize, visualizeById
+from visualize_pose import visualizeById
 import time
 import json
 K = np.array([[2337.1354059537, 0, 1231.74452654278], [0, 2336.97909090459, 1048.86628248792], [0, 0, 1]])

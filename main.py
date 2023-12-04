@@ -149,17 +149,18 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--eval", type=bool, default=False)
+    parser.add_argument("--eval", type=bool, default=True)
     parser.add_argument("--data_path", type=str, default=os.path.join(os.getcwd(), "data"))
     parser.add_argument("--class_type", type=str, default="obj1")
     parser.add_argument("--lr", type=float, default=0.1)
     parser.add_argument("--batch_size", type=int, default=1)
     parser.add_argument("--epochs", type=int, default=150)
-    parser.add_argument("--train", type=bool, default=True)
+    parser.add_argument("--train", type=bool, default=False)
     parser.add_argument("--gpu_id", help="GPU_ID", type=str, default="0")
     parser.add_argument("--used_epoch", type=int, default=-1)
+    # The sceneObjs.yml file shows that obj1 is in scene with an index of 2
     parser.add_argument("--scene", type=int, default=13)
-    parser.add_argument("--index", type=int, default=1)
+    parser.add_argument("--index", type=int, default=2)
     parser.add_argument("--threshold", type=int, default=5)
     args = parser.parse_args()
     main(args)

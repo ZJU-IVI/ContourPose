@@ -77,7 +77,7 @@ code for paper "ContourPose：A monocular 6D pose estimation method for reflecti
 2. Testing
    Take the testing on `obj1` as an example. 
 
-   The `sceneObjs.yml` file shows that obj1 is in scene with an index of 2.run
+   The `sceneObjs.yml` file shows that obj1 is in scene with an index of 2. run
 
    ```shell
     python main.py --class_type obj1 --eval True --scene 13 --index 2

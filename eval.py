@@ -23,10 +23,7 @@ class evaluator:
                 self.cad_path, "{}.ply".format(args.class_type)
             )
         )
-        corners = np.loadtxt(os.path.join(os.getcwd(), "keypoints/{}.txt".format(cls)))
-        self.corners = corners
-        self.keyponits = np.loadtxt(
-            os.path.join(args.data_path, "train", self.args.class_type, "{}.txt".format(args.class_type)))
+        self.keyponits = np.loadtxt(os.path.join(os.getcwd(), "keypoints/{}.txt".format(args.class_type)))
         self.device = device
         self.pts_3d = self.mesh_model["pts"] * 1000
         self.data_loader = test_loader

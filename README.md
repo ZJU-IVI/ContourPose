@@ -49,7 +49,6 @@ code for paper "ContourPose：A monocular 6D pose estimation method for reflecti
    mkdir $ROOT/data
    ln -s path/to/Real Images $ROOT/data/train
    ln -s path/to/Synthetic Images $ROOT/data/train/renders
-   ln -s path/to/Synthetic Images/gtEdges $ROOT/data/train/renders/Render_edge
    ln -s path/to/Test Scenes $ROOT/data/test
    ln -s path/to/SUN2012pascalformat $ROOT/data/SUN2012pascalformat
    ```
@@ -81,7 +80,7 @@ code for paper "ContourPose：A monocular 6D pose estimation method for reflecti
    The `sceneObjs.yml` file shows that obj1 is in scene with an index of 2.run
 
    ```shell
-    python main.py --class_type obj1 --test True --scene 13 --index 2
+    python main.py --class_type obj1 --eval True --scene 13 --index 2
    ```
 ## Grasping experiment
 

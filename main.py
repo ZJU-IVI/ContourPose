@@ -115,7 +115,7 @@ def main(args):
         )
 
     corners = np.loadtxt(
-        os.path.join(args.data_path, "train", args.class_type, "{}.txt".format(args.class_type)))  # KEYPOINTS
+        os.path.join(os.getcwd(), "keypoints/{}.txt".format(args.class_type)))  # KEYPOINTS
 
     ContourNet = ContourPose(heatmap_dim=corners.shape[0])
 
@@ -155,7 +155,7 @@ if __name__ == '__main__':
     parser.add_argument("--lr", type=float, default=0.1)
     parser.add_argument("--batch_size", type=int, default=1)
     parser.add_argument("--epochs", type=int, default=150)
-    parser.add_argument("--train", type=bool, default=False)
+    parser.add_argument("--train", type=bool, default=True)
     parser.add_argument("--gpu_id", help="GPU_ID", type=str, default="0")
     parser.add_argument("--used_epoch", type=int, default=-1)
     parser.add_argument("--scene", type=int, default=13)

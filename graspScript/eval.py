@@ -53,7 +53,7 @@ class evaluator(threading.Thread):
         # your model path
         model_path = os.path.join(os.path.dirname(os.getcwd()), "model")
         model_epoch = 150
-        self.corner = np.loadtxt(os.path.join(data_path, "train", class_type, "{}.txt".format(class_type)))
+        self.corner = np.loadtxt(os.path.join(os.path.dirname(os.getcwd()), "keypoints/{}.txt".format(cls)))
         ContourPoseNet = ContourPose(heatmap_dim=self.corner.shape[0])
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         ContourPoseNet = nn.DataParallel(ContourPoseNet, device_ids=[0, 1])

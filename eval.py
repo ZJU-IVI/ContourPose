@@ -23,7 +23,7 @@ class evaluator:
                 self.cad_path, "{}.ply".format(args.class_type)
             )
         )
-        corners = np.loadtxt(os.path.join(self.cad_path, '{}.txt'.format(args.class_type)))
+        corners = np.loadtxt(os.path.join(os.getcwd(), "keypoints/{}.txt".format(cls)))
         self.corners = corners
         self.keyponits = np.loadtxt(
             os.path.join(args.data_path, "train", self.args.class_type, "{}.txt".format(args.class_type)))

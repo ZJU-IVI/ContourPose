@@ -28,9 +28,9 @@ class MyDataset(Dataset):
 
         self.scene = scene
         self.index = index
-        self.corners = np.loadtxt(os.path.join(root, "train", cls, "{}.txt".format(cls)))  # KEYPOINTS
+        self.corners = np.loadtxt(os.path.join(os.getcwd(), "keypoints/{}.txt".format(cls)))  # KEYPOINTS
         self.element = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
-        self.bg_imgs_path = os.path.join(os.getcwd(), "bg_imgs.npy")
+        self.bg_imgs_path = os.path.join(os.getcwd(), "dataset/bg_imgs.npy")
         self.sun_path = os.path.join(root, "SUN2012pascalformat")
         self.get_bg_imgs()
         self.bg_imgs = np.load(self.bg_imgs_path).astype(np.str)
@@ -60,7 +60,7 @@ class MyDataset(Dataset):
         edge_path = osp.join(self.path, "gtEdge")
 
         render_dir = osp.join(root, "train", "renders", cls)
-        render_edge_dir = osp.join(root, "train", "renders", "Render_edge", cls)
+        render_edge_dir = osp.join(root, "train", "renders", "gtEdge", cls)
         render_num = len(glob.glob(osp.join(render_dir, "*.pkl")))
 
         for idx in train_inds:
